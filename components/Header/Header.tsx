@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   BurgermenuIcon,
   CloseIcon,
@@ -17,6 +17,12 @@ import DarkModeToggler from "./DarkModeToggler";
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  useEffect(() => {
+    if (window.innerWidth > 768) {
+      setIsMenuOpen(false);
+    }
+  }, []);
+
   const navLinks = [
     {
       path: "/portfolio",
@@ -29,6 +35,21 @@ export default function Header() {
     {
       path: "/about",
       label: "Über Mich",
+    },
+  ];
+
+  const dropdownExternLinks = [
+    {
+      path: "https://www.github.com/Dasajton",
+      icon: <GitHubIcon className="text-7xl" />,
+    },
+    {
+      path: "https://www.linkedin.com/in/david-sajitz-748b831a4",
+      icon: <LinkedInIcon className="text-7xl" />,
+    },
+    {
+      path: "mailto:davidsajitz@gmail.com",
+      icon: <MailIcon className="text-7xl" />,
     },
   ];
   return (
@@ -60,7 +81,7 @@ export default function Header() {
       <ul
         className={`${
           isMenuOpen ? "flex" : "hidden"
-        } dropdownSize absolute left-0 top-20 z-10 flex-col space-y-4 bg-slate-100 p-4 text-xl text-blue-700 dark:bg-slate-950 dark:text-sky-500 md:hidden`}
+        } dropdownSize absolute left-0 top-20 z-10 flex-col space-y-4 bg-slate-100 p-4 text-xl dark:bg-slate-950 md:hidden`}
       >
         {navLinks.map((navLink, index) => (
           <li key={index} onClick={() => setIsMenuOpen(false)}>
@@ -68,18 +89,17 @@ export default function Header() {
           </li>
         ))}
         <div className="flex items-center justify-center gap-4 p-5">
-          <a href="https://www.github.com/Dasajton" target="_blank">
-            <GitHubIcon className="text-7xl" />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/david-sajitz-748b831a4"
-            target="_blank"
-          >
-            <LinkedInIcon className="text-7xl" />
-          </a>
-          <a href="mailto:davidsajitz@gmail.com" target="_blank">
-            <MailIcon className="text-7xl" />
-          </a>
+          {dropdownExternLinks.map((link, index) => (
+            <a
+              key={index}
+              href={link.path}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-700 transition-colors duration-300 ease-in-out hover:text-sky-500 dark:text-sky-500 dark:hover:text-blue-700"
+            >
+              {link.icon}
+            </a>
+          ))}
         </div>
       </ul>
     </nav>

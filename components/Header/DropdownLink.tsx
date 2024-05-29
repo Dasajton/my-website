@@ -10,7 +10,7 @@ export default function DropdownLink({
   return (
     <Link
       href={href}
-      className="mx-auto my-4 flex w-5/6 items-center rounded-lg bg-blue-700 p-6 text-2xl text-slate-200 shadow-md shadow-sky-500 dark:bg-sky-500 dark:shadow-blue-700"
+      className="mx-auto my-4 flex w-5/6 items-center rounded-lg bg-blue-700 p-6 text-2xl text-slate-200 shadow-md shadow-sky-500 transition-colors duration-300 ease-in-out hover:bg-sky-500 dark:bg-sky-500 dark:shadow-blue-700 dark:hover:bg-blue-700"
     >
       {children}
     </Link>
