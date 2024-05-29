@@ -28,7 +28,7 @@ export default function Header() {
     },
     {
       path: "/about",
-      label: "About Me",
+      label: "Über Mich",
     },
   ];
   return (
