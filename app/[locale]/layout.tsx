@@ -1,6 +1,9 @@
-import { NextIntlClientProvider, useMessages } from "next-intl";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
 
 type Props = {
   children: React.ReactNode;
@@ -14,12 +17,14 @@ export default async function LocaleLayout({ children, params }: Props) {
     notFound();
   }
 
+  const messages = await getMessages();
+
   return (
-    <NextIntlClientProvider locale={locale}>
+    <NextIntlClientProvider locale={locale} messages={messages}>
       <div className="flex min-h-screen flex-col">
-        {/* Navbar kommt in Phase 2 */}
+        <Navbar />
         <main className="flex-1">{children}</main>
-        {/* Footer kommt in Phase 2 */}
+        <Footer />
       </div>
     </NextIntlClientProvider>
   );
