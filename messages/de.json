@@ -1,0 +1,59 @@
+{
+  "metadata": {
+    "title": "David Sajitz — Webentwickler & Softwareentwickler",
+    "description": "Persönliche Website von David Sajitz. Fullstack-Entwickler für Websites, Web-Apps und mehr."
+  },
+  "nav": {
+    "home": "Start",
+    "about": "Über mich",
+    "projects": "Projekte",
+    "blog": "Blog",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "greeting": "Hallo, ich bin",
+    "name": "David Sajitz",
+    "tagline": "Fullstack-Entwickler mit Leidenschaft für moderne Webtechnologien",
+    "cta_projects": "Meine Projekte",
+    "cta_contact": "Kontakt aufnehmen"
+  },
+  "about": {
+    "title": "Über mich",
+    "skills_title": "Technologien",
+    "services_title": "Leistungen"
+  },
+  "projects": {
+    "title": "Projekte",
+    "description": "Eine Auswahl meiner bisherigen Arbeiten und Projekte.",
+    "view_project": "Projekt ansehen",
+    "view_code": "Code ansehen",
+    "tech_stack": "Tech-Stack"
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Artikel und Gedanken zu Webentwicklung und Technologie.",
+    "read_more": "Weiterlesen"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "description": "Du hast ein Projekt im Kopf oder möchtest einfach Hallo sagen? Schreib mir gerne eine E-Mail oder vernetze dich mit mir.",
+    "email_label": "E-Mail",
+    "social_label": "Social Media"
+  },
+  "footer": {
+    "copyright": "David Sajitz. Alle Rechte vorbehalten.",
+    "impressum": "Impressum",
+    "privacy": "Datenschutz"
+  },
+  "theme": {
+    "light": "Hell",
+    "dark": "Dunkel",
+    "system": "System",
+    "toggle": "Theme wechseln"
+  },
+  "locale": {
+    "switch": "Sprache wechseln",
+    "de": "Deutsch",
+    "en": "English"
+  }
+}
