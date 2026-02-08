@@ -82,7 +82,7 @@ export function Navbar() {
           <ThemeToggle />
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" aria-label="Menü öffnen">
+              <Button variant="ghost" size="icon" aria-label={t("open_menu")}>
                 <Menu size={20} />
               </Button>
             </SheetTrigger>

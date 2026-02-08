@@ -7,7 +7,8 @@
     "home": "Start",
     "about": "Über mich",
     "projects": "Projekte",
-    "blog": "Blog"
+    "blog": "Blog",
+    "open_menu": "Menü öffnen"
   },
   "hero": {
     "greeting": "Hallo, ich bin",
@@ -18,6 +19,8 @@
   },
   "about": {
     "title": "Über mich",
+    "intro_1": "Hallo! Ich bin David, ein leidenschaftlicher Fullstack-Entwickler aus Deutschland. Ich arbeite mit modernen Webtechnologien und entwickle Websites, Web-Apps und digitale Lösungen für verschiedene Anforderungen.",
+    "intro_2": "Meine Schwerpunkte liegen in der Entwicklung mit React und Next.js, aber ich bin auch mit Backend-Technologien, WordPress und Netzwerktechnik vertraut. Ich lerne ständig dazu und begeistere mich für neue Technologien und Herangehensweisen.",
     "skills_title": "Technologien",
     "services_title": "Leistungen"
   },

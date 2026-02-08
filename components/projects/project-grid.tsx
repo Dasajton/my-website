@@ -1,3 +1,4 @@
+import { useLocale } from "next-intl";
 import type { ContentEntry, ProjectFrontmatter } from "@/lib/mdx";
 import { ProjectCard } from "./project-card";
 
@@ -6,10 +7,14 @@ type ProjectGridProps = {
 };
 
 export function ProjectGrid({ projects }: ProjectGridProps) {
+  const locale = useLocale();
+
   if (projects.length === 0) {
     return (
       <p className="text-center text-muted-foreground">
-        Noch keine Projekte vorhanden.
+        {locale === "de"
+          ? "Noch keine Projekte vorhanden."
+          : "No projects yet."}
       </p>
     );
   }
