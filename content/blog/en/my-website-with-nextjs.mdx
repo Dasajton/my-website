@@ -1,0 +1,61 @@
+---
+title: "How I Built My Personal Website with Next.js"
+description: "A behind-the-scenes look at my portfolio website — tech stack, architecture decisions and lessons learned."
+date: "2026-02-01"
+tags: ["Next.js", "React", "TailwindCSS", "Web Development"]
+---
+
+## Why a Personal Website?
+
+As a web developer, having your own website is more than just a digital business card. It's a living project that showcases your skills — and a playground for new technologies at the same time.
+
+## The Tech Stack
+
+I chose a modern stack for this website:
+
+- **Next.js** with App Router for server-side rendering and optimal performance
+- **TailwindCSS v4** for fast, consistent styling
+- **ShadCN/ui** as a component library with a clean design
+- **MDX** for blog articles and project descriptions
+- **next-intl** for internationalization (German + English)
+
+## Architecture Decisions
+
+### Content as MDX
+
+Instead of using a headless CMS, all content lives as MDX files directly in the repository. This has several advantages:
+
+- Version control via Git
+- No external service required
+- Full control over rendering
+- React components usable directly in Markdown
+
+### Internationalization
+
+With `next-intl` and the `[locale]` segment in the App Router, multilingual support can be implemented elegantly. UI texts come from JSON files, while content is maintained as separate MDX files per language.
+
+```tsx
+// Example: Using translations
+const t = useTranslations("nav");
+return <Link href="/projects">{t("projects")}</Link>;
+```
+
+## Code Highlighting
+
+Blog articles support syntax highlighting with `rehype-pretty-code` and `shiki`. Here's an example:
+
+```typescript
+function greet(name: string): string {
+  return `Hello, ${name}!`;
+}
+
+console.log(greet("World"));
+```
+
+## Deployment
+
+The website runs as a Docker container on a VPS with Caddy as a reverse proxy. With GitHub Actions, every push to `main` automatically triggers a build and deployment.
+
+## Conclusion
+
+The stack has proven itself: Next.js delivers excellent performance, TailwindCSS speeds up styling enormously, and MDX gives me the flexibility I need for blog posts and projects.

@@ -124,3 +124,32 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* rehype-pretty-code */
+[data-rehype-pretty-code-figure] pre {
+  overflow-x: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background-color: var(--muted) !important;
+  padding: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+[data-rehype-pretty-code-figure] code {
+  display: grid;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+[data-rehype-pretty-code-figure] [data-line] {
+  padding: 0 0.25rem;
+}
+
+/* Dual theme support: light colors by default, dark in .dark */
+[data-rehype-pretty-code-figure] span {
+  color: var(--shiki-light) !important;
+}
+
+.dark [data-rehype-pretty-code-figure] span {
+  color: var(--shiki-dark) !important;
+}

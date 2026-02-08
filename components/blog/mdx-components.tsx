@@ -1,4 +1,5 @@
 import type { MDXComponents } from "mdx/types";
+import type { ComponentPropsWithoutRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -43,16 +44,33 @@ export const mdxComponents: MDXComponents = {
       {children}
     </blockquote>
   ),
-  code: ({ children }) => (
-    <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">
-      {children}
-    </code>
-  ),
-  pre: ({ children }) => (
-    <pre className="mb-4 overflow-x-auto rounded-lg border bg-muted p-4 font-mono text-sm">
-      {children}
-    </pre>
-  ),
+  code: (props: ComponentPropsWithoutRef<"code">) => {
+    // Code blocks processed by rehype-pretty-code have data-theme
+    if ("data-theme" in props) {
+      return <code {...props} />;
+    }
+    // Inline code
+    return (
+      <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">
+        {props.children}
+      </code>
+    );
+  },
+  pre: (props: ComponentPropsWithoutRef<"pre">) => {
+    // Code blocks processed by rehype-pretty-code have data-theme
+    if ("data-theme" in props) {
+      return <pre {...props} />;
+    }
+    // Fallback for unprocessed code blocks
+    return (
+      <pre className="mb-4 overflow-x-auto rounded-lg border bg-muted p-4 font-mono text-sm">
+        {props.children}
+      </pre>
+    );
+  },
+  figure: (props: ComponentPropsWithoutRef<"figure">) => {
+    return <figure className="mb-4" {...props} />;
+  },
   img: ({ src, alt }) => (
     <Image
       src={src ?? ""}

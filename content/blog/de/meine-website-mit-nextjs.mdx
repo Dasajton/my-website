@@ -1,0 +1,61 @@
+---
+title: "Wie ich meine persönliche Website mit Next.js gebaut habe"
+description: "Ein Blick hinter die Kulissen meiner Portfolio-Website — Tech-Stack, Architektur-Entscheidungen und Lessons Learned."
+date: "2026-02-01"
+tags: ["Next.js", "React", "TailwindCSS", "Webentwicklung"]
+---
+
+## Warum eine eigene Website?
+
+Als Webentwickler ist eine eigene Website mehr als nur eine digitale Visitenkarte. Sie ist ein lebendiges Projekt, das zeigt, was man kann — und gleichzeitig eine Spielwiese für neue Technologien.
+
+## Der Tech-Stack
+
+Für diese Website habe ich mich für einen modernen Stack entschieden:
+
+- **Next.js** mit App Router für Server-Side Rendering und optimale Performance
+- **TailwindCSS v4** für schnelles, konsistentes Styling
+- **ShadCN/ui** als Komponentenbibliothek mit clean Design
+- **MDX** für Blog-Artikel und Projektbeschreibungen
+- **next-intl** für Mehrsprachigkeit (Deutsch + Englisch)
+
+## Architektur-Entscheidungen
+
+### Content als MDX
+
+Anstatt ein Headless CMS zu verwenden, liegen alle Inhalte als MDX-Dateien direkt im Repository. Das hat mehrere Vorteile:
+
+- Versionierung über Git
+- Kein externer Service nötig
+- Volle Kontrolle über das Rendering
+- React-Komponenten direkt im Markdown nutzbar
+
+### Internationalisierung
+
+Mit `next-intl` und dem `[locale]`-Segment im App Router lässt sich Mehrsprachigkeit elegant umsetzen. UI-Texte kommen aus JSON-Dateien, Content wird pro Sprache als separate MDX-Datei gepflegt.
+
+```tsx
+// Beispiel: Übersetzungen verwenden
+const t = useTranslations("nav");
+return <Link href="/projects">{t("projects")}</Link>;
+```
+
+## Code-Highlighting
+
+Blog-Artikel unterstützen Syntax-Highlighting mit `rehype-pretty-code` und `shiki`. Hier ein Beispiel:
+
+```typescript
+function greet(name: string): string {
+  return `Hallo, ${name}!`;
+}
+
+console.log(greet("Welt"));
+```
+
+## Deployment
+
+Die Website läuft als Docker-Container auf einem VPS mit Caddy als Reverse Proxy. Über GitHub Actions wird bei jedem Push auf `main` automatisch gebaut und deployed.
+
+## Fazit
+
+Der Stack hat sich bewährt: Next.js liefert exzellente Performance, TailwindCSS beschleunigt das Styling enorm, und MDX gibt mir die Flexibilität, die ich für Blog und Projekte brauche.
