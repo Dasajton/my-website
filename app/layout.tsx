@@ -16,12 +16,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://davidsajitz.de"),
   title: {
     default: "David Sajitz — Webentwickler & Softwareentwickler",
     template: "%s | David Sajitz",
   },
   description:
     "Persönliche Website von David Sajitz. Fullstack-Entwickler für Websites, Web-Apps und mehr.",
+  openGraph: {
+    type: "website",
+    siteName: "David Sajitz",
+    locale: "de_DE",
+  },
+  twitter: {
+    card: "summary",
+  },
+  authors: [{ name: "David Sajitz" }],
 };
 
 export default async function RootLayout({

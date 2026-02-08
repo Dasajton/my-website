@@ -23,6 +23,13 @@ export async function generateMetadata({ params }: Props) {
   return {
     title: post.frontmatter.title,
     description: post.frontmatter.description,
+    alternates: {
+      canonical: `/${locale}/blog/${slug}`,
+      languages: {
+        de: `/de/blog/${slug}`,
+        en: `/en/blog/${slug}`,
+      },
+    },
   };
 }
 
