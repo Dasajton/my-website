@@ -12,6 +12,8 @@ COPY . .
 # NEXT_PUBLIC_ variables are baked in at build time
 ARG NEXT_PUBLIC_UMAMI_WEBSITE_ID
 ENV NEXT_PUBLIC_UMAMI_WEBSITE_ID=$NEXT_PUBLIC_UMAMI_WEBSITE_ID
+# Disable Turbopack for production builds
+ENV TURBOPACK=0
 RUN npm run build
 
 # Stage 3: Production runner
