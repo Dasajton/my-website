@@ -8,7 +8,7 @@ export const socialLinks = [
   },
   {
     name: "LinkedIn",
-    href: "www.linkedin.com/in/david-sajitz-748b831a4",
+    href: "https://linkedin.com/in/david-sajitz-748b831a4",
     icon: Linkedin,
   },
   {
