@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { getLocale } from "next-intl/server";
 import { MotionProvider } from "@/components/shared/motion-provider";
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -43,19 +44,17 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <head>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
-          <script
+          <Script
             async
             defer
             data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
             src="https://analytics.davidsajitz.de/script.js"
           />
         )}
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
