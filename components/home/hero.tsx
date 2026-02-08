@@ -56,7 +56,7 @@ export function Hero() {
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <Link href={`/${locale}/contact`}>
+              <Link href={`/${locale}/about#kontakt`}>
                 <Mail className="mr-2 h-4 w-4" />
                 {t("cta_contact")}
               </Link>

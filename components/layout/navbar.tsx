@@ -22,7 +22,6 @@ const navItems = [
   { key: "about", href: "/about" },
   { key: "projects", href: "/projects" },
   { key: "blog", href: "/blog" },
-  { key: "contact", href: "/contact" },
 ] as const;
 
 export function Navbar() {

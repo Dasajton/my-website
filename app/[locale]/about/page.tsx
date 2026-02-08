@@ -1,8 +1,10 @@
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { Separator } from "@/components/ui/separator";
+import { Card, CardContent } from "@/components/ui/card";
 import { SkillsGrid } from "@/components/about/skills-grid";
 import { ServicesList } from "@/components/about/services-list";
+import { socialLinks } from "@/data/social";
 
 export async function generateMetadata({
   params,
@@ -16,6 +18,7 @@ export async function generateMetadata({
 
 export default function AboutPage() {
   const t = useTranslations("about");
+  const tc = useTranslations("contact");
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
@@ -48,9 +51,49 @@ export default function AboutPage() {
       <Separator className="my-12" />
 
       {/* Services */}
-      <section>
+      <section className="mb-12">
         <h2 className="mb-6 text-2xl font-semibold">{t("services_title")}</h2>
         <ServicesList />
+      </section>
+
+      <Separator className="my-12" />
+
+      {/* Kontakt */}
+      <section id="kontakt">
+        <h2 className="mb-4 text-2xl font-semibold">{tc("title")}</h2>
+        <p className="mb-6 text-muted-foreground">{tc("description")}</p>
+
+        <div className="space-y-4">
+          {socialLinks.map((link) => {
+            const displayUrl = link.href
+              .replace("mailto:", "")
+              .replace("https://", "");
+            const isExternal = !link.href.startsWith("mailto:");
+
+            return (
+              <Card key={link.name}>
+                <CardContent className="flex items-center gap-4 p-5">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+                    <link.icon size={20} />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-muted-foreground">
+                      {link.name}
+                    </p>
+                    <a
+                      href={isExternal && !link.href.startsWith("http") ? `https://${link.href}` : link.href}
+                      target={isExternal ? "_blank" : undefined}
+                      rel={isExternal ? "noopener noreferrer" : undefined}
+                      className="text-base font-medium transition-colors hover:text-primary"
+                    >
+                      {displayUrl}
+                    </a>
+                  </div>
+                </CardContent>
+              </Card>
+            );
+          })}
+        </div>
       </section>
     </div>
   );
