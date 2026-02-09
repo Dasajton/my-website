@@ -1,6 +1,6 @@
 export type Skill = {
   name: string;
-  category: "frontend" | "backend" | "tools" | "other";
+  category: "frontend" | "backend" | "tools" | "ai" | "other";
 };
 
 export const skills: Skill[] = [
@@ -28,6 +28,10 @@ export const skills: Skill[] = [
   { name: "Linux", category: "tools" },
   { name: "CI/CD", category: "tools" },
 
+  // KI & Automatisierung
+  { name: "n8n", category: "ai" },
+  {name: "Claude Code", category: "ai" },
+
   // Sonstiges
   { name: "WordPress / WooCommerce", category: "other" },
   { name: "Netzwerktechnik", category: "other" },
@@ -37,5 +41,6 @@ export const skillCategories = {
   frontend: { de: "Frontend", en: "Frontend" },
   backend: { de: "Backend", en: "Backend" },
   tools: { de: "Tools & DevOps", en: "Tools & DevOps" },
+  ai: { de: "KI & Automatisierung", en: "AI & Automation" },
   other: { de: "Sonstiges", en: "Other" },
 } as const;
