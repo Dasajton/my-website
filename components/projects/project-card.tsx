@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -58,8 +58,14 @@ export function ProjectCard({ slug, frontmatter, index }: ProjectCardProps) {
           </div>
 
           <div className="mt-auto flex gap-2 pt-2">
+            <Button asChild variant="outline" size="sm">
+              <Link href={`/${locale}/projects/${slug}`}>
+                <ArrowRight className="mr-1.5 h-3.5 w-3.5" />
+                {t("learn_more")}
+              </Link>
+            </Button>
             {frontmatter.liveUrl && (
-              <Button asChild variant="outline" size="sm">
+              <Button asChild variant="ghost" size="sm">
                 <a
                   href={frontmatter.liveUrl}
                   target="_blank"
@@ -67,18 +73,6 @@ export function ProjectCard({ slug, frontmatter, index }: ProjectCardProps) {
                 >
                   <ExternalLink className="mr-1.5 h-3.5 w-3.5" />
                   {t("view_project")}
-                </a>
-              </Button>
-            )}
-            {frontmatter.githubUrl && (
-              <Button asChild variant="ghost" size="sm">
-                <a
-                  href={frontmatter.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Github className="mr-1.5 h-3.5 w-3.5" />
-                  {t("view_code")}
                 </a>
               </Button>
             )}
